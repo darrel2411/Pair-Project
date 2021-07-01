@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Add Article Cloth</title>
+</head>
+<body>
+    <h1>Add Cloth Article</h1>
+    <form action="/clothes/edit/<%= post.id %>" method="post">
+        <label>Title</label><br>
+        <input type="text" name="title" value="<%= post.title %>">
+        <br>
+        <br>
+        <label>Image Url</label><br>
+        <input type="text" name="imageURL" value="<%= post.imageURL %>">
+        <br>
+
+        <br>
+        <label> Descriptions </label><br>
+        <input type="text" name="text" value = "<%= post.text %>">
+        <br>
+
+        <br>
+        <label> Category </label><br>
+        <select name="CategoryId">
+            <% categories.forEach(el => { %>
+                <option value=<%= el.id %> <%= post.CategoryId === el.id ? 'selected' : '' %>> <%= el.type %> </option> 
+            <% }); %>
+        </select>
+        
+        <br>
+        <br>
+        <label> Tag </label><br>
+        <select name="TagId">
+            <% tagPost.forEach(el => { %>
+               <% if(el.PostId === post.id) { %>
+                  <%  tags.forEach(element => { %>
+                      <%  if(element.id === el.TagId) { %>
+                            <option selected value="<%= element.id %>">  <%= element.tagName %>  </option>
+                     <%  } else { %>
+                        <option value="<%= element.id %>"> <%= element.tagName %>  </option>
+                     <% } %>
+                  <%  }) %>
+               <% } %>
+            <% }); %>
+        </select>
+        <br>
+        <br>
+        <button type="submit"> POST </button>
+        
+    </form>
+
+    
+</body>
+</html>

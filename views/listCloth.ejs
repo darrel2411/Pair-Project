@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Clothes</title>
+</head>
+<body style="background-color:burlywood">
+    <nav class="navbar navbar-light" style="background-color: #ffdd9d;"">
+        <a class="" href="/clothes">
+            <button class="btn btn-light"> Home </button>
+        </a>
+        <a class="" href="/clothes/register">
+            <button class="btn btn-primary"> Register </button>
+        </a>
+        <a class="" href="/clothes/login">
+            <button class="btn btn-danger"> Logout </button>
+        </a>
+    </nav>
+    <div class="text-center">
+        <h1>List clothes</h1>
+        <a href="/clothes/add"><button class="btn btn-primary">Add Post</button></a>
+    </div>
+
+    <br><br>
+
+    <div class="container text-center">
+        <% post.forEach(el => { %>
+            <h2><%= el.title %></h2>
+            <h4><%= publishedTime(el.updatedAt) %></h4>
+
+            <div >
+                <img src="<%= el.imageURL %>" alt="" width="500" height="500">
+            </div>
+            
+            <p> <%= el.cutText()%> <a href="/clothes/details/<%= el.id %>"> Read more... </a>
+            </p> 
+            <div>
+                <a href="/clothes/delete/<%= el.id %>"><button>DELETE</button></a>
+                <a href="/clothes/edit/<%= el.id %>"><button>EDIT</button></a>
+            </div>
+            <br><br>
+        <% }) %>
+    </div>
+</body>
+</html>
