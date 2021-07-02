@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Detail</title>
 </head>
+
 <body style="background-color:burlywood">
-    <nav class="navbar navbar-light" style="background-color: #ffdd9d;"">
-        <a class="" href="/clothes">
-            <button class="btn btn-light"> <-- Back to All Clothes </button>
-        </a>
-    </nav>
-    <div style="text-align: center;" >
+
+    <%- include('partials/header'); %>
+
+    <div style="text-align: center;">
         <h1><b>Detail cloth</b></h1>
         <br>
         <img src="<%= post.imageURL %>" alt="">
@@ -21,10 +22,10 @@
         <p>
             "<%= post.text %>"
             <br><br>
-            posted <%= publishedTime(post.createdAt) %>.. 
-            
+            posted <%= publishedTime(post.createdAt) %>..
         </p>
     </div>
 
 </body>
+
 </html>

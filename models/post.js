@@ -17,41 +17,54 @@ module.exports = (sequelize, DataTypes) => {
       Post.belongsTo(models.User, {
         foreignKey: 'UserId'
       })
-      Post.belongsToMany(models.Tag,{
-        through : models.TagPost
+      Post.belongsToMany(models.Tag, {
+        through: models.TagPost
       })
     }
-    
-    static getClothes(){
-      return Post
-                .findAll({
-                  where:{
-                  CategoryId:1
-                },
-                  order: [['updatedAt', 'DESC']]
 
-                })
+    static getClothes() {
+      return Post
+        .findAll({
+          where: {
+            CategoryId: 1
+          },
+          order: [
+            ['updatedAt', 'DESC']
+          ]
+        })
+    }
+
+    static getCosmetics() {
+      return Post
+        .findAll({
+          where: {
+            CategoryId: 2
+          },
+          order: [
+            ['updatedAt', 'DESC']
+          ]
+        })
     }
 
     cutText() {
-      return this.text.substring(0,10)
+      return this.text.substring(0, 10)
     }
 
   };
   Post.init({
     title: {
-      type: DataTypes.STRING, 
+      type: DataTypes.STRING,
       validate: {
-        notEmpty:{
+        notEmpty: {
           msg: "must input title"
         }
       }
     },
     date: DataTypes.DATE,
     text: {
-      type: DataTypes.TEXT, 
+      type: DataTypes.TEXT,
       validate: {
-        notEmpty:{
+        notEmpty: {
           msg: "must input descriptions"
         }
       }
@@ -73,10 +86,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, { 
+  }, {
     hooks: {
       beforeCreate: (post, options) => {
-          post.title = post.title.toUpperCase()
+        post.title = post.title.toUpperCase()
       }
     },
     sequelize,

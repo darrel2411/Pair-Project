@@ -1,12 +1,11 @@
 "use strict"
 
-const userIsLogin = (req,res,next) => {
-    console.log(req.session.isLogin)
-    if(req.session.isLogin){
-        document.getElementById("register").classList.add('invisible');
+const userIsLogin = (req, res, next) => {
+    if (req.session.isLogin) {
         next()
     } else {
-        res.redirect('/clothes/login')
+
+        res.redirect('/login')
     }
 }
 
